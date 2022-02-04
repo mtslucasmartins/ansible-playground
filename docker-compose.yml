@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+
+  linux-1:
+    build: 
+      context: ./docker
+      dockerfile: ubuntu.Dockerfile
+    # stdin_open: true # this is equivalent to docker run -i 
+    # tty: true # this is equivalent to docker run -t 
+    ports:
+      - "22"
+    networks:
+      vpcbr:
+        ipv4_address: 172.20.128.1
+
+  linux-2:
+    build: 
+      context: ./docker
+      dockerfile: ubuntu.Dockerfile
+    # stdin_open: true # this is equivalent to docker run -i 
+    # tty: true # this is equivalent to docker run -t 
+    ports:
+      - "22"
+    networks:
+      vpcbr:
+        ipv4_address: 172.20.128.2
+
+networks:
+  vpcbr:
+    ipam:
+     config:
+       - subnet: 172.20.0.0/16

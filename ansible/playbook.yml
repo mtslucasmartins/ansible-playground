@@ -1,0 +1,10 @@
+---
+  - name: Create Deployer
+    hosts: servers
+    become: yes
+    remote_user: admin
+    tasks: 
+      - name: Add deployer
+        user: 
+          name: deployer
+          password: deployer
